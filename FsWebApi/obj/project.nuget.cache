@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "oRAHCZep0CwdV2MOTaaVHop6nT1DFOwFjvFmfKdHoz2XC2kLPHOi3dLHxr2pZtej8UmbZKouuXO6GQ6xGNukXA==",
+  "success": true,
+  "projectFilePath": "c:\\git-jmschietekat\\misc\\FsWebApi\\FsWebApi.fsproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\User\\.nuget\\packages\\fsharp.core\\5.0.0\\fsharp.core.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
