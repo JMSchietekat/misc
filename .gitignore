@@ -1,3 +1,9 @@
 bin*
-obj*
-.ionide
+*\obj*
+*\.ionide
+.idea
+.vscode
+.env
+*.dll
+\dist
+*/obj/*
