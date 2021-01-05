@@ -1,4 +1,6 @@
-﻿using Dapper;
+﻿using System;
+using System.Collections.Immutable;
+using Dapper;
 using System.Data.SqlClient;
 using System.Linq;
 using static System.Console;
@@ -9,25 +11,28 @@ namespace CsDapper
     
     public class Farm
     {
-        public int IdFarm { get; }
-        public string Description { get; }
+        public int IdFarm { get; set; }
+        public string Description { get; set; }
+        public DateTime CreatedDateTime { get; set; }
     }
     class Program
     {
         static void Main(string[] args)
         {
             WriteLine("Hello World!");
+            
+            string[] lines = System.IO.File.ReadAllLines(@".env");
 
             var connectionString = GetEnvironmentVariable("sqlConnectionString");
-            const string query = @"SELECT IdFarm, Description FROM dbo.Farm WHERE IdStatus < 4;";
+            const string query = @"SELECT * FROM dbo.Farm WHERE IdStatus < 4;";
 
             using var connection = new SqlConnection(connectionString);
             
-            var farms = connection.QueryAsync<Farm>(query).Result.ToList();
+            var farms = connection.QueryAsync<Farm>(query).Result.ToImmutableArray();
 
-            WriteLine(farms.Count);
+            WriteLine(farms.Length);
             
-            farms.ForEach(farm => WriteLine(farm.IdFarm + ": " + farm.Description));
+            farms.ForEach(farm => WriteLine(farm.IdFarm + ": " + farm.Description + ": " + farm.CreatedDateTime));
 
         }
     }
