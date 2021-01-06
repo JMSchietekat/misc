@@ -14,13 +14,9 @@ namespace NonPrimitiveTypes
     
     class Program
     {
-        void TestFunction()
-        {
-            Console.WriteLine("Delegate working.");
-        }
-        
         static void Main(string[] args)
         {
+            // Class
             var person = new Person();
             person.FirstName = "Justin";
             person.LastName = "Schietekat";
@@ -50,6 +46,8 @@ namespace NonPrimitiveTypes
             fn += fn2;
 
             Console.WriteLine(fn(5));
+            
+            // Reference vs Value types
         }
     }
 }
