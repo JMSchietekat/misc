@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using CsAsynchronousProgramming.Ingredients;
 
@@ -13,7 +14,11 @@ namespace CsAsynchronousProgramming
 
             await NonBlockingPreparation();
 
-            await StartTaskConcurrently();
+            await ConcurrentPreparation();
+
+            await AwaitAllPreparation();
+
+            await WhenAnyPreparation();
         }
 
         private static void SynchronousPreparation()
@@ -60,9 +65,9 @@ namespace CsAsynchronousProgramming
             Console.WriteLine("Non-blocking breakfast is ready!\n");
         }
 
-        private static async Task StartTaskConcurrently()
+        private static async Task ConcurrentPreparation()
         {
-            Console.WriteLine("Starting tasks concurrently breakfast preparation");
+            Console.WriteLine("Concurrent breakfast preparation");
             Coffee cup = Coffee.PourCoffee();
             Console.WriteLine("coffee is ready");
 
@@ -84,7 +89,62 @@ namespace CsAsynchronousProgramming
             Bacon bacon = await baconTask;
             Console.WriteLine("bacon is ready");
             
-            Console.WriteLine("Starting tasks concurrently breakfast is ready!\n");
+            Console.WriteLine("Concurrent breakfast is ready!\n");
+        }
+
+        private static async Task AwaitAllPreparation()
+        {
+            Console.WriteLine("Await all breakfast preparation");
+            var cup = Coffee.PourCoffee();
+            Console.WriteLine("coffee is ready");
+    
+            var eggsTask = Egg.FryEggsAsync(2);
+            var baconTask = Bacon.FryBaconAsync(3);
+            var toastTask = Toast.MakeToastWithButterAndJamAsync(2);
+
+            await Task.WhenAll(eggsTask, baconTask, toastTask);
+            Console.WriteLine("eggs are ready");
+            Console.WriteLine("bacon is ready");
+            Console.WriteLine("toast is ready");
+
+            Juice oj = Juice.PourOJ();
+            Console.WriteLine("oj is ready");
+            Console.WriteLine("Breakfast is ready!");
+            Console.WriteLine("Await all breakfast is ready!\n");
+        }
+        
+        private static async Task WhenAnyPreparation()
+        {
+            Console.WriteLine("When any breakfast preparation");
+            var cup = Coffee.PourCoffee();
+            Console.WriteLine("coffee is ready");
+    
+            var eggsTask = Egg.FryEggsAsync(2);
+            var baconTask = Bacon.FryBaconAsync(3);
+            var toastTask = Toast.MakeToastWithButterAndJamAsync(2);
+
+            var breakfastTasks = new List<Task> {eggsTask, baconTask, toastTask};
+            while (breakfastTasks.Count > 0)
+            {
+                var finishedTask = await Task.WhenAny(breakfastTasks);
+                if (finishedTask == eggsTask)
+                {
+                    Console.WriteLine("eggs are ready");
+                } 
+                else if (finishedTask == baconTask)
+                {
+                    Console.WriteLine("bacon is ready");
+                } 
+                else if (finishedTask == toastTask)
+                {
+                    Console.WriteLine("toast is ready");
+                }
+            }
+            
+            Juice oj = Juice.PourOJ();
+            Console.WriteLine("oj is ready");
+            Console.WriteLine("Breakfast is ready!");
+            Console.WriteLine("When any breakfast is ready!\n");
         }
     }
 }

@@ -33,5 +33,14 @@ namespace CsAsynchronousProgramming.Ingredients
 
             return new Toast();
         }
+        
+        public static async Task<Toast> MakeToastWithButterAndJamAsync(int number)
+        {
+            var toast = await ToastBreadAsync(number);
+            ApplyButter(toast);
+            ApplyJam(toast);
+
+            return toast;
+        }
     }
 }
