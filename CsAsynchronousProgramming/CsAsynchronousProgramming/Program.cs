@@ -12,9 +12,11 @@ namespace CsAsynchronousProgramming
             SynchronousPreparation();
 
             await NonBlockingPreparation();
+
+            await StartTaskConcurrently();
         }
 
-        static void SynchronousPreparation()
+        private static void SynchronousPreparation()
         {
             Console.WriteLine("Starting synchronous breakfast preparation");
             Coffee cup = Coffee.PourCoffee();
@@ -33,10 +35,10 @@ namespace CsAsynchronousProgramming
 
             Juice oj = Juice.PourOJ();
             Console.WriteLine("oj is ready");
-            Console.WriteLine("Synchronous breakfast is ready!");
+            Console.WriteLine("Synchronous breakfast is ready!\n");
         }
 
-        static async Task NonBlockingPreparation()
+        private static async Task NonBlockingPreparation()
         {   
             Console.WriteLine("Starting non blocking breakfast preparation");
             Coffee cup = Coffee.PourCoffee();
@@ -55,7 +57,34 @@ namespace CsAsynchronousProgramming
 
             Juice oj = Juice.PourOJ();
             Console.WriteLine("oj is ready");
-            Console.WriteLine("Non-blocking breakfast is ready!");
+            Console.WriteLine("Non-blocking breakfast is ready!\n");
+        }
+
+        private static async Task StartTaskConcurrently()
+        {
+            Console.WriteLine("Starting tasks concurrently breakfast preparation");
+            Coffee cup = Coffee.PourCoffee();
+            Console.WriteLine("coffee is ready");
+
+            Task<Egg> eggsTask = Egg.FryEggsAsync(2);
+            Task<Bacon> baconTask = Bacon.FryBaconAsync(3);
+            Task<Toast> toastTask = Toast.ToastBreadAsync(2);
+
+            Toast toast = await toastTask;
+            Toast.ApplyButter(toast);
+            Toast.ApplyJam(toast);
+            Console.WriteLine("toast is ready");
+
+            Juice oj = Juice.PourOJ();
+            Console.WriteLine("oj is ready");
+            
+            Egg eggs = await eggsTask;
+            Console.WriteLine("eggs are ready");
+
+            Bacon bacon = await baconTask;
+            Console.WriteLine("bacon is ready");
+            
+            Console.WriteLine("Starting tasks concurrently breakfast is ready!\n");
         }
     }
 }

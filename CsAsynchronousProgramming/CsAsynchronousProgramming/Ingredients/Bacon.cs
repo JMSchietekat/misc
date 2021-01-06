@@ -25,7 +25,7 @@ namespace CsAsynchronousProgramming.Ingredients
         {
             Console.WriteLine($"putting {slices} slices of bacon in the pan");
             Console.WriteLine("cooking first side of bacon...");
-            Task.Delay(3000).Wait();
+            await Task.Delay(3000);
             for (int slice = 0; slice < slices; slice++)
             {
                 Console.WriteLine("flipping a slice of bacon");
