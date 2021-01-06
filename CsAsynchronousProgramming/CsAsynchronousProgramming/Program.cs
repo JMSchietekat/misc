@@ -139,6 +139,7 @@ namespace CsAsynchronousProgramming
                 {
                     Console.WriteLine("toast is ready");
                 }
+                breakfastTasks.Remove(finishedTask);
             }
             
             Juice oj = Juice.PourOJ();
