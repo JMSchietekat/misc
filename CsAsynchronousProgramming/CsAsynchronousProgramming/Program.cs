@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using CsAsynchronousProgramming.Ingredients;
 
@@ -9,16 +10,45 @@ namespace CsAsynchronousProgramming
     {
         static async Task Main(string[] args)
         {
+            Stopwatch stopwatch = new Stopwatch();
             
+            stopwatch.Start();
             SynchronousPreparation();
+            stopwatch.Stop();
+            PrintElapsedTime(stopwatch);
+            stopwatch.Reset();
 
+            stopwatch.Start();
             await NonBlockingPreparation();
+            stopwatch.Stop();
+            PrintElapsedTime(stopwatch);
+            stopwatch.Reset();
 
+            stopwatch.Start();
             await ConcurrentPreparation();
+            stopwatch.Stop();
+            PrintElapsedTime(stopwatch);
+            stopwatch.Reset();
 
+            stopwatch.Start();
             await AwaitAllPreparation();
+            stopwatch.Stop();
+            PrintElapsedTime(stopwatch);
+            stopwatch.Reset();
 
+            stopwatch.Start();
             await WhenAnyPreparation();
+            stopwatch.Stop();
+            PrintElapsedTime(stopwatch);
+            stopwatch.Reset();
+        }
+
+        private static void PrintElapsedTime(Stopwatch stopwatch)
+        {
+            TimeSpan timeSpan = stopwatch.Elapsed;
+            Console.WriteLine("Run time: {0:00}:{1:00}:{2:00}.{3:00}\n",
+                timeSpan.Hours, timeSpan.Minutes, timeSpan.Seconds,
+                timeSpan.Milliseconds / 10);
         }
 
         private static void SynchronousPreparation()
@@ -40,7 +70,7 @@ namespace CsAsynchronousProgramming
 
             Juice oj = Juice.PourOJ();
             Console.WriteLine("oj is ready");
-            Console.WriteLine("Synchronous breakfast is ready!\n");
+            Console.WriteLine("Synchronous breakfast is ready!");
         }
 
         private static async Task NonBlockingPreparation()
@@ -62,7 +92,7 @@ namespace CsAsynchronousProgramming
 
             Juice oj = Juice.PourOJ();
             Console.WriteLine("oj is ready");
-            Console.WriteLine("Non-blocking breakfast is ready!\n");
+            Console.WriteLine("Non-blocking breakfast is ready!");
         }
 
         private static async Task ConcurrentPreparation()
@@ -89,7 +119,7 @@ namespace CsAsynchronousProgramming
             Bacon bacon = await baconTask;
             Console.WriteLine("bacon is ready");
             
-            Console.WriteLine("Concurrent breakfast is ready!\n");
+            Console.WriteLine("Concurrent breakfast is ready!");
         }
 
         private static async Task AwaitAllPreparation()
@@ -110,7 +140,7 @@ namespace CsAsynchronousProgramming
             Juice oj = Juice.PourOJ();
             Console.WriteLine("oj is ready");
             Console.WriteLine("Breakfast is ready!");
-            Console.WriteLine("Await all breakfast is ready!\n");
+            Console.WriteLine("Await all breakfast is ready!");
         }
         
         private static async Task WhenAnyPreparation()
@@ -145,7 +175,7 @@ namespace CsAsynchronousProgramming
             Juice oj = Juice.PourOJ();
             Console.WriteLine("oj is ready");
             Console.WriteLine("Breakfast is ready!");
-            Console.WriteLine("When any breakfast is ready!\n");
+            Console.WriteLine("When any breakfast is ready!");
         }
     }
 }
