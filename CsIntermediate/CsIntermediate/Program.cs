@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using CsIntermediate.Database;
 
 namespace CsIntermediate
 {
@@ -9,7 +11,9 @@ namespace CsIntermediate
         static void Main(string[] args)
         {
             // TestPerson();
-            TestStopWatch();
+            // TestStopWatch();
+            // TestStack();
+            TestDbConnection();
         }
 
         private static void TestPerson()
@@ -43,14 +47,35 @@ namespace CsIntermediate
                 stopwatch.Stop();
                 Console.WriteLine($"Duration: {stopwatch.Duration().Seconds} seconds");
             }
-            catch (Exception e)
+            catch
             {
                 Console.WriteLine("Stopwatch can't be started twice.");
             }
+        }
+
+        private static void TestStack()
+        {
+            var stack = new Stack();
+            stack.Push(1);
+            stack.Push(2);
+            stack.Push(3);
             
+            Console.WriteLine(stack.Pop());
+            Console.WriteLine(stack.Pop());
+            Console.WriteLine(stack.Pop());
+            Console.WriteLine(stack.Pop());
+        }
+
+        private static void TestDbConnection()
+        {
+            var dbConncetions = new List<DbConnection>();
+            dbConncetions.Add(new SqlServerConnection("sqlServerConnectionString"));
+            dbConncetions.Add(new OracleConnection("oracleConnectionString"));
             
-            
-            
+            foreach (var dbConnection in dbConncetions)
+            {
+                new DbCommand(dbConnection, "SELECT * FROM MASTER");
+            }
         }
     }
 }
