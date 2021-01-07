@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using CsIntermediate.Database;
+using CsIntermediate.Workflow;
+using CsIntermediate.Workflow.Activities;
 
 namespace CsIntermediate
 {
@@ -13,7 +15,8 @@ namespace CsIntermediate
             // TestPerson();
             // TestStopWatch();
             // TestStack();
-            TestDbConnection();
+            // TestDbConnection();
+            TestWorkflowEngine();
         }
 
         private static void TestPerson()
@@ -76,6 +79,14 @@ namespace CsIntermediate
             {
                 new DbCommand(dbConnection, "SELECT * FROM MASTER");
             }
+        }
+
+        private static void TestWorkflowEngine()
+        {
+            var workflowRunner = new WorkflowRunner();
+            workflowRunner.Add(new UploadVideoToCloudStorageActivity());
+            workflowRunner.Add(new PostToYoutubeActivity());
+            workflowRunner.Run();
         }
     }
 }
