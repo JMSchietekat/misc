@@ -8,6 +8,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TypeConversion", "TypeConve
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NonPrimitiveTypes", "NonPrimitiveTypes\NonPrimitiveTypes.csproj", "{9D0ED3B6-171F-4BBA-AA44-19A4B22E18FB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlFlow", "ControlFlow\ControlFlow.csproj", "{B1D971E0-227B-471E-9AFC-14FFD31EDB8E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArraysAndLists", "ArraysAndLists\ArraysAndLists.csproj", "{F22B8096-D751-4D76-9D4B-4C42646BCB64}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +34,13 @@ Global
 		{9D0ED3B6-171F-4BBA-AA44-19A4B22E18FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9D0ED3B6-171F-4BBA-AA44-19A4B22E18FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9D0ED3B6-171F-4BBA-AA44-19A4B22E18FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1D971E0-227B-471E-9AFC-14FFD31EDB8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1D971E0-227B-471E-9AFC-14FFD31EDB8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1D971E0-227B-471E-9AFC-14FFD31EDB8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1D971E0-227B-471E-9AFC-14FFD31EDB8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F22B8096-D751-4D76-9D4B-4C42646BCB64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F22B8096-D751-4D76-9D4B-4C42646BCB64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F22B8096-D751-4D76-9D4B-4C42646BCB64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F22B8096-D751-4D76-9D4B-4C42646BCB64}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
