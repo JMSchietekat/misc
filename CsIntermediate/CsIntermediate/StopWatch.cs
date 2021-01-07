@@ -4,36 +4,29 @@ namespace CsIntermediate
 {
     public class StopWatch
     {
-        enum StopWatchState{
-            Stopped = 0,
-            Running = 1
-        }
 
-        private StopWatchState _state = StopWatchState.Stopped;
-        private DateTime StartDateTime { get; set; }
-        private DateTime StopDateTime { get; set; }
+        private bool _running;
+        private DateTime _startDateTime;
+        private DateTime _stopDateTime;
         
         public void Start()
         {
-            if (_state == StopWatchState.Running)
+            if (_running)
                 throw new InvalidOperationException();
 
-            _state = StopWatchState.Running;
-            StartDateTime = DateTime.Now;
+            _running = true;
+            _startDateTime = DateTime.Now;
         }   
         
         public void Stop()
         {
-            if (_state == StopWatchState.Stopped)
+            if (!_running)
                 return;
-            
-            _state = StopWatchState.Stopped;
-            StopDateTime = DateTime.Now;
+
+            _running = false;
+            _stopDateTime = DateTime.Now;
         }
 
-        public TimeSpan Duration()
-        {
-            return StopDateTime - StartDateTime;
-        }
+        public TimeSpan Duration() => _stopDateTime - _startDateTime;
     }
 }
