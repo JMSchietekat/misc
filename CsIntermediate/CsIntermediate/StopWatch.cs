@@ -2,7 +2,7 @@
 
 namespace CsIntermediate
 {
-    class StopWatch
+    public class StopWatch
     {
         enum StopWatchState{
             Stopped = 0,
