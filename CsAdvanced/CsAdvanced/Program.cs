@@ -1,12 +1,27 @@
 ﻿using System;
+using Interop = Interoperability.FSharp;
 
 namespace CsAdvanced
 {
-    class Program
+    internal static class Program
     {
-        static void Main(string[] args)
+        private static void Main()
         {
-            Console.WriteLine("Hello World!");
+            var login = new Interop.Login(42, "connel", "password");
+            PrintWelcomeMessage(login);
+            Console.ReadLine();
+        }
+
+        private static void PrintWelcomeMessage(Interop.ILogin login)
+        {
+            if (login.IsValid)
+            {
+                Console.WriteLine("Login successful");
+            }
+            else
+            {
+                Console.WriteLine("Failed to log in");
+            }
         }
     }
 }
