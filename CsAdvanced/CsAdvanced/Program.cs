@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Interop = Interoperability.FSharp;
 
@@ -8,8 +9,9 @@ namespace CsAdvanced
     {
         private static void Main()
         {
-            RunInteroperabilitySample();
-            RunExtensionMethodsSample();
+            // RunInteroperabilitySample();
+            // RunExtensionMethodsSample();
+            RunLinqSample();
         }
         
 
@@ -52,5 +54,34 @@ namespace CsAdvanced
 
             return string.Join(" ", words.Take(numberOfWords)) + "...";
         }
+
+        private static void RunLinqSample()
+        {
+            var books = new BookRepository().GetBooks();
+            
+            // LINQ Query operators
+            var cheaperBooks =
+                from b in books
+                where b.Price < 10
+                orderby b.Title
+                select b.Title;
+
+            // LINQ Extension Methods
+            var cheapBooks = books
+                .Where(b => b.Price < 10)
+                .OrderBy(b => b.Title)
+                .Select(b => b.Title);
+                
+
+            foreach (var book in cheapBooks)
+                Console.WriteLine(book); 
+            
+            foreach (var book in cheaperBooks)
+                Console.WriteLine(book);
+        }
+
+        
+
+        
     }
 }
