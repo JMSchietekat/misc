@@ -7,3 +7,6 @@ bin*
 *.dll
 \dist
 */obj/*
+.DS_Store
+*\dist
+*\node_modules
