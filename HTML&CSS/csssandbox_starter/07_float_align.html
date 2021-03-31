@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Float & Align</title>
+	<style>
+		*{
+			box-sizing: border-box;
+		}
+		body {
+			font-family: Arial, Helvetica, sans-serif;
+			line-height: 1.4em;
+		}
+
+		.clr{
+			clear: both;
+		}
+
+		.container {
+			max-width: 960px;
+			margin: 30px auto;
+		}
+
+		.box {
+			background: #f4f4f4;
+			border: 1px solid #333;
+			padding: 20px;
+			margin-bottom: 15px;
+		}
+
+		.box p {
+			text-align: justify;
+		}
+
+		#box-2{
+			float:left;
+			width: 68%;
+		}
+
+		#box-3{
+			float:right;
+			width: 28%;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<div id="box-1" class="box">
+			<h3>Heading</h3>
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel nihil nemo numquam quod obcaecati aliquid
+				eaque
+				aliquam unde delectus fuga.</p>
+		</div>
+		<div id="box-2" class="box">
+			<h3>Heading</h3>
+			<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt deleniti quaerat adipisci error beatae quo
+				praesentium cum, cumque perspiciatis vitae eum dignissimos expedita nulla quasi enim soluta ipsum
+				blanditiis harum optio, libero ipsa amet, explicabo ipsam dolores? Et ipsa sed alias assumenda voluptate
+				odio quod! Facere laboriosam praesentium dicta optio corrupti earum magnam, accusamus amet eius, maiores
+				repellat modi atque neque voluptatibus provident accusantium veritatis quisquam? Maiores voluptatem
+				totam accusantium! Quibusdam nulla cum repudiandae nemo eum doloribus corrupti rem animi explicabo
+				dolores, rerum reiciendis fugiat provident sed iusto magnam vitae facilis nesciunt atque quidem est
+				consequuntur ea recusandae iste. In qui quos optio fugiat vero. Officiis asperiores, facere laborum
+				voluptates dignissimos odio quam enim maxime delectus illo nulla minima praesentium vitae quia culpa
+				blanditiis unde eveniet dolor fuga ad quidem. Itaque maiores ducimus tempora voluptates. Voluptatibus
+				beatae, maiores accusamus quis architecto officia quasi quaerat nostrum a ad ducimus ex saepe..</p>
+		</div>
+		<div id="box-3" class="box">
+			<h3>Heading</h3>
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel nihil nemo numquam quod obcaecati aliquid
+				eaque
+				aliquam unde delectus fuga.</p>
+		</div>
+
+		<div class="clr"></div>
+
+		<div id="box-4" class="box">
+			<h3>Heading</h3>
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel nihil nemo numquam quod obcaecati aliquid
+				eaque
+				aliquam unde delectus fuga.</p>
+		</div>
+	</div>
+</body>
+
+</html>

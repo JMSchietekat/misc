@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Flex Align</title>
+	<style>
+		* {
+			font-family: Arial, Helvetica, sans-serif;
+		}
+
+		#container {
+			background: #555;
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			align-items: center;
+			/* Align items horizontal */
+			justify-content: space-evenly;
+			/*  
+            OPTIONS:
+            flex-start 
+            flex-end 
+            center
+            space-between
+            space-around
+            space-evenly 
+
+        */
+			height: 50vh;
+			/* Align items vertical (must be height) */
+			/* align-items: baseline; */
+			/*  
+            OPTIONS:
+            flex-start 
+            flex-end 
+            center
+            baseline
+            stretch
+        */
+			/* Align items vertical where extra space */
+			/* align-content: space-between; */
+			/*  
+            OPTIONS:
+            flex-start 
+            flex-end 
+            center
+            space-between
+            space-around
+            stretch
+        */
+		}
+
+		.item {
+			background: #b1b1b1;
+			border: #ccc solid 1px;
+			border-radius: 5px;
+			text-align: center;
+			padding: 1rem 3rem;
+			margin: 0.5rem;
+			/* flex: 1; */
+		}
+
+		.item-1{
+			align-self: flex-start;
+		}
+
+		.item-2{
+			align-self: center;
+		}
+
+		.item-3{
+			align-self: flex-end;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="container">
+		<div class="item item-1">
+			<h3>Item 1</h3>
+		</div>
+		<div class="item item-2">
+			<h3>Item 2</h3>
+		</div>
+		<div class="item item-3">
+			<h3>Item 3</h3>
+		</div>
+	</div>
+</body>
+
+</html>
